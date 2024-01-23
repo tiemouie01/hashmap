@@ -72,7 +72,7 @@ test("Get an array of values", () => {
   map.set("Gender", "Male");
   map.set("Age", 23);
 
-  expect(map.keys().includes("Timmy")).toBeTruthy();
-  expect(map.keys().includes("Male")).toBeTruthy();
-  expect(map.keys().includes(23)).toBeTruthy();
+  expect(map.values().includes("Timmy")).toBeTruthy();
+  expect(map.values().includes("Male")).toBeTruthy();
+  expect(map.values().includes(23)).toBeTruthy();
 });
