@@ -50,12 +50,15 @@ const HashMap = function HashMap() {
     return false;
   }
 
+  const length = () => capacity;
+
   return {
     hash,
     set,
     get,
     has,
     remove,
+    length,
   };
 };
 

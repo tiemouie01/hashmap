@@ -31,7 +31,6 @@ test("Remove a value from the hashmap", () => {
 
 test("Attempt removing a key from the hashmap that doesn't exist", () => {
   const map = HashMap();
-  map.set("Gender", "Male");
 
   expect(map.has("Gender")).toBeFalsy();
   expect(map.remove("Gender")).toBeFalsy();
