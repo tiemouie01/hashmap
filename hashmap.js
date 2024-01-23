@@ -10,6 +10,7 @@ const growBucket = function checkIfLoadFactorIsExceeded(
 
 const HashMap = function HashMap() {
   const buckets = new Array(16).fill(null);
+  const keyList = [];
   let capacity = 0;
 
   const hash = function computeHash(string) {
@@ -29,6 +30,7 @@ const HashMap = function HashMap() {
 
     buckets[keyHash] = value;
     capacity += 1;
+    keyList.push(key);
 
     //  If the load factor is exceeded, grow the bucket.
     const totalBuckets = buckets.length;
@@ -62,6 +64,22 @@ const HashMap = function HashMap() {
     })
   }
 
+  const keys = () => keyList;
+
+  const values = function getValuesFromMap() {
+    const valueList = [];
+
+    buckets.forEach((value) => {
+      valueList.push(value);
+    });
+
+    return valueList;
+  }
+
+  const entries = function getKeyValuePairs() {
+    
+  }
+
   return {
     hash,
     set,
@@ -70,6 +88,8 @@ const HashMap = function HashMap() {
     remove,
     length,
     clear,
+    keys,
+    values,
   };
 };
 
