@@ -1,13 +1,13 @@
-const growBucket = function checkIfLoadFactorIsExceeded(capacity, totalSize) {
+const growBucket = function checkIfLoadFactorIsExceeded(capacity, totalBuckets) {
   const loadFactor = 0.75;
 
-  if (capacity / totalSize > loadFactor) return true;
+  if (capacity / totalBuckets > loadFactor) return true;
   return false;
 };
 
 const HashMap = function HashMap() {
-  const buckets = new Array(16);
-  const capacity = 0;
+  const buckets = new Array(16).fill(null);
+  let capacity = 0;
 
   const hash = function computeHash(string) {
     let hashCode = 0;
@@ -20,21 +20,25 @@ const HashMap = function HashMap() {
     return hashCode;
   };
 
-  // const set = function setKeyValuePair(key, value) {
-  //   // Get the hash of the key and insert into its corresponding bucket.
-  //   const keyHash = hash(key) % buckets.length;
+  const set = function setKeyValuePair(key, value) {
+    // Get the hash of the key and insert into its corresponding bucket.
+    const keyHash = hash(key) % buckets.length;
 
-  //   buckets[keyHash] = value;
-  //   capacity += 1;
+    buckets[keyHash] = value;
+    capacity += 1;
 
-  //   //  If the load factor is exceeded, grow the bucket.
-  //   const totalBuckets = buckets.length;
-  //   if (growBucket(capacity, totalBuckets))
-  //     buckets.push(...new Array(totalBuckets));
-  // };
+    //  If the load factor is exceeded, grow the bucket.
+    const totalBuckets = buckets.length;
+    if (growBucket(capacity, totalBuckets))
+      buckets.push(...new Array(totalBuckets).fill(null));
+  };
+
+  const get = (key) => buckets[hash(key) % buckets.length];
 
   return {
     hash,
+    set,
+    get,
   };
 };
 
