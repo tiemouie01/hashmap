@@ -40,11 +40,22 @@ const HashMap = function HashMap() {
 
   const has = (key) => buckets[hash(key) % buckets.length] !== null;
 
+  const remove = function removeAValueFromTheMap(key) {
+    const keyHash = hash(key) % buckets.length;
+
+    if (buckets[keyHash] !== null) {
+      buckets[keyHash] = null;
+      return true;
+    }
+    return false;
+  }
+
   return {
     hash,
     set,
     get,
     has,
+    remove,
   };
 };
 
