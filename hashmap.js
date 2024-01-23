@@ -52,6 +52,16 @@ const HashMap = function HashMap() {
 
   const length = () => capacity;
 
+  const clear = function clearTheMapOfAllBuckets() {
+    buckets.forEach((bucket) => {
+      if (bucket !== null) {
+        // eslint-disable-next-line no-param-reassign
+        bucket = null;
+        capacity -= 1;
+      }
+    })
+  }
+
   return {
     hash,
     set,
@@ -59,6 +69,7 @@ const HashMap = function HashMap() {
     has,
     remove,
     length,
+    clear,
   };
 };
 
