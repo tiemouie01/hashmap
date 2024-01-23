@@ -77,7 +77,14 @@ const HashMap = function HashMap() {
   }
 
   const entries = function getKeyValuePairs() {
-    
+    const entryList = [];
+
+    keys.forEach((key) => {
+      const value = get(key);
+      entryList.push([key, value]);
+    })
+
+    return entryList;
   }
 
   return {
@@ -90,6 +97,7 @@ const HashMap = function HashMap() {
     clear,
     keys,
     values,
+    entries,
   };
 };
 
