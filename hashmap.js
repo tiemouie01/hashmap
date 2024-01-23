@@ -1,4 +1,7 @@
-const growBucket = function checkIfLoadFactorIsExceeded(capacity, totalBuckets) {
+const growBucket = function checkIfLoadFactorIsExceeded(
+  capacity,
+  totalBuckets
+) {
   const loadFactor = 0.75;
 
   if (capacity / totalBuckets > loadFactor) return true;
@@ -35,10 +38,13 @@ const HashMap = function HashMap() {
 
   const get = (key) => buckets[hash(key) % buckets.length];
 
+  const has = (key) => buckets[hash(key) % buckets.length] !== null;
+
   return {
     hash,
     set,
     get,
+    has,
   };
 };
 
