@@ -45,7 +45,7 @@ test("Get the length of a hashmap", () => {
   expect(map.length()).toBe(3);
 });
 
-test("Get the length of a hashmap", () => {
+test("Clear the hashmap of any values", () => {
   const map = HashMap();
   map.set("Name", "Timmy");
   map.set("Gender", "Male");
